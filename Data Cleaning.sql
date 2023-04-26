@@ -14,9 +14,6 @@ UPDATE oct2022
 		end_station_name = TRIM('"' FROM end_station_name),
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
-  
-UPDATE oct2022 
-  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
 
 UPDATE nov2022
 	SET ride_id = TRIM('"' FROM ride_id),
@@ -29,9 +26,6 @@ UPDATE nov2022
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
 
-UPDATE nov2022 
-  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
-
 UPDATE dec2022 
 	SET ride_id = TRIM('"' FROM ride_id),
 		rideable_type = TRIM('"' FROM rideable_type),
@@ -42,10 +36,6 @@ UPDATE dec2022
 		end_station_name = TRIM('"' FROM end_station_name),
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
-	
-UPDATE dec2022 
-  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
-        
 
 -- Replacing blank name values and 0 lat/long values with Nulls and "Unknown"
 

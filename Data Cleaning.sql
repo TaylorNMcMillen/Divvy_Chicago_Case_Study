@@ -1,6 +1,9 @@
--- SEPT has something messed up in the last column for member_casual
+-- sept2022 member_casual has extra characters
 UPDATE sept2022 
   SET  member_casual = SUBSTRING(member_casual,1,6);
+DELETE FROM sept2022
+WHERE member_casual LIKE '"%';
+
 
 
 -- The Oct Nov and DEC CSVs have quotes surrounding the data so we will remove those first
@@ -14,6 +17,9 @@ UPDATE oct2022
 		end_station_name = TRIM('"' FROM end_station_name),
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
+  
+UPDATE oct2022 
+  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
 
 UPDATE nov2022
 	SET ride_id = TRIM('"' FROM ride_id),
@@ -26,6 +32,9 @@ UPDATE nov2022
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
 
+UPDATE nov2022 
+  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
+
 UPDATE dec2022 
 	SET ride_id = TRIM('"' FROM ride_id),
 		rideable_type = TRIM('"' FROM rideable_type),
@@ -36,6 +45,10 @@ UPDATE dec2022
 		end_station_name = TRIM('"' FROM end_station_name),
 		end_station_id = TRIM('"' FROM end_station_id),
 		member_casual = TRIM('"' FROM member_casual);
+	
+UPDATE dec2022 
+  SET  member_casual = SUBSTRING(member_casual,1,LENGTH(member_casual)-1);
+        
 
 -- Replacing blank name values and 0 lat/long values with Nulls and "Unknown"
 
